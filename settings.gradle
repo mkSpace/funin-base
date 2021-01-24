@@ -1,0 +1,3 @@
+include ':funinbase'
+include ':app'
+rootProject.name = "FuninSample"

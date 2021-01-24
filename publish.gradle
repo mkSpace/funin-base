@@ -1,0 +1,62 @@
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+
+    publish = true
+    override = true
+
+    pkg {
+        repo = rootProject.ext.repositoryName
+        name = 'mkspacebase'
+        userOrg = 'mkspace'
+        desc = 'MkSpace base library'
+        licenses = ['Apache-2.0']
+
+        vcsUrl = rootProject.ext.gitHubRepoUrl
+        websiteUrl = rootProject.ext.websiteUrl
+
+        publicDownloadNumbers = true
+
+        githubRepo = rootProject.ext.gitHubRepo
+        githubReleaseNotesFile = rootProject.ext.gitHubReleaseNotesFile
+
+        version {
+            name = rootProject.ext.libraryVersionName
+            vcsTag = rootProject.ext.libraryVersionName
+        }
+    }
+}
+
+task javadoc(type: Javadoc) {
+    excludes = ['**/*.kt']
+    source = android.sourceSets.main.java.source
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+
+    if (JavaVersion.current().isJava8Compatible()) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+    }
+}
+
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
