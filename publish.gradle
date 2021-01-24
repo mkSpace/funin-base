@@ -4,6 +4,9 @@ apply plugin: 'com.jfrog.bintray'
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
+group = rootProject.ext.packageName
+version = rootProject.ext.libraryVersionName
+
 bintray {
     user = properties.getProperty("bintray.user")
     key = properties.getProperty("bintray.apikey")
@@ -15,14 +18,15 @@ bintray {
 
     pkg {
         repo = rootProject.ext.repositoryName
-        name = 'mkspacebase'
+        name = 'funin'
         userOrg = 'mkspace'
-        desc = 'MkSpace base library'
+        desc = 'Funin base library'
         licenses = ['Apache-2.0']
 
         vcsUrl = rootProject.ext.gitHubRepoUrl
         websiteUrl = rootProject.ext.websiteUrl
 
+        labels = ['aar', 'android', 'base-android']
         publicDownloadNumbers = true
 
         githubRepo = rootProject.ext.gitHubRepo
@@ -30,8 +34,53 @@ bintray {
 
         version {
             name = rootProject.ext.libraryVersionName
+            desc = 'Funin Base Library'
+            released = new Date()
             vcsTag = rootProject.ext.libraryVersionName
         }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'funinbase'
+            description 'It is funin-base library'
+            inceptionYear '2021'
+
+            packaging 'aar'
+            groupId rootProject.ext.packageName
+            artifactId 'funinbase'
+            version rootProject.ext.libraryVersionName
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            scm {
+                connection rootProject.ext.websiteUrl
+                developerConnection rootProject.ext.websiteUrl
+                url rootProject.ext.websiteUrl
+            }
+
+            developers {
+                developer {
+                    id 'funin'
+                    name 'funin'
+                    email 'once29@naver.com'
+                }
+            }
+        }
+    }
+}
+
+android {
+    defaultConfig {
+        versionName rootProject.ext.libraryVersionName
     }
 }
 
@@ -59,4 +108,10 @@ task sourcesJar(type: Jar) {
 artifacts {
     archives javadocJar
     archives sourcesJar
+}
+
+task findConventions {
+    doLast {
+        println project.getConvention()
+    }
 }

@@ -1,15 +1,15 @@
 ext {
-    libraryVersionName = '0.0.1'
+    libraryVersionName = '0.0.1-alpha7'
 
     // Bintray setting info
-    repositoryName = 'funin-base'
+    repositoryName = 'funin'
     packageName = 'com.funin.base.funinbase'
 
     description = 'funin base library'
 
-    websiteUrl = 'https://github.com/mkSpace/MkSpaceBase'
-    gitHubRepoUrl = 'https://github.com/mkSpace/MkSpaceBase.git'
+    websiteUrl = 'https://github.com/mkSpace/funin-base'
+    gitHubRepoUrl = 'https://github.com/mkSpace/funin-base.git'
 
-    gitHubRepo = 'mkSpace/MkSpaceBase'
+    gitHubRepo = 'mkSpace/funin-base'
     gitHubReleaseNotesFile = 'README.md'
 }
