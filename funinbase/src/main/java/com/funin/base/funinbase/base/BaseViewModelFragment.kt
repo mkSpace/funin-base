@@ -3,12 +3,16 @@ package com.funin.base.funinbase.base
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.CallSuper
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.addTo
 
-abstract class BaseViewModelFragment : Fragment() {
+abstract class BaseViewModelFragment : Fragment {
+
+    constructor() : super()
+    constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
     private val disposables by lazy { CompositeDisposable() }
 
