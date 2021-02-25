@@ -8,12 +8,12 @@ import androidx.annotation.LayoutRes
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 fun ViewGroup.inflate(@LayoutRes layoutId: Int, attachToRoot: Boolean = false): View =
-    inflate(LayoutInflater.from(context), layoutId, attachToRoot)
+        inflate(LayoutInflater.from(context), layoutId, attachToRoot)
 
 fun ViewGroup?.inflate(
-    inflater: LayoutInflater,
-    @LayoutRes layoutId: Int,
-    attachToRoot: Boolean = false
+        inflater: LayoutInflater,
+        @LayoutRes layoutId: Int,
+        attachToRoot: Boolean = false
 ): View = inflater.inflate(layoutId, this, attachToRoot)
 
 fun BottomSheetDialog.show(block: BottomSheetDialog.() -> Unit) {

@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 
 fun EditText.showSoftInput(): Boolean {
     val inputMethodManager =
-        context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-            ?: return false
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                    ?: return false
 
     isFocusable = true
     isFocusableInTouchMode = true
@@ -20,8 +20,8 @@ fun EditText.showSoftInput(): Boolean {
 
 fun View.hideSoftInput(): Boolean {
     val inputMethodManager =
-        context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-            ?: return false
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                    ?: return false
 
     isFocusable = true
     isFocusableInTouchMode = true
@@ -31,8 +31,8 @@ fun View.hideSoftInput(): Boolean {
 
 fun Activity.hideSoftInput(): Boolean {
     val view = currentFocus
-        ?: window?.decorView?.rootView
-        ?: findViewById<View>(android.R.id.content)
+            ?: window?.decorView?.rootView
+            ?: findViewById<View>(android.R.id.content)
     return view?.hideSoftInput() ?: false
 }
 

@@ -6,51 +6,51 @@ import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
 
 fun TextView.setDrawablesWithIntrinsicBounds(
-    @DrawableRes left: Int = 0,
-    @DrawableRes top: Int = 0,
-    @DrawableRes right: Int = 0,
-    @DrawableRes bottom: Int = 0
+        @DrawableRes left: Int = 0,
+        @DrawableRes top: Int = 0,
+        @DrawableRes right: Int = 0,
+        @DrawableRes bottom: Int = 0
 ) = setCompoundDrawablesWithIntrinsicBounds(
-    if (left != 0) ContextCompat.getDrawable(context, left) else compoundDrawables[0],
-    if (top != 0) ContextCompat.getDrawable(context, top) else compoundDrawables[1],
-    if (right != 0) ContextCompat.getDrawable(context, right) else compoundDrawables[2],
-    if (bottom != 0) ContextCompat.getDrawable(context, bottom) else compoundDrawables[3]
+        if (left != 0) ContextCompat.getDrawable(context, left) else compoundDrawables[0],
+        if (top != 0) ContextCompat.getDrawable(context, top) else compoundDrawables[1],
+        if (right != 0) ContextCompat.getDrawable(context, right) else compoundDrawables[2],
+        if (bottom != 0) ContextCompat.getDrawable(context, bottom) else compoundDrawables[3]
 )
 
 fun TextView.setDrawablesWithIntrinsicBounds(
-    left: Drawable? = null,
-    top: Drawable? = null,
-    right: Drawable? = null,
-    bottom: Drawable? = null
+        left: Drawable? = null,
+        top: Drawable? = null,
+        right: Drawable? = null,
+        bottom: Drawable? = null
 ) = setCompoundDrawablesWithIntrinsicBounds(
-    left ?: compoundDrawables[0],
-    top ?: compoundDrawables[1],
-    right ?: compoundDrawables[2],
-    bottom ?: compoundDrawables[3]
+        left ?: compoundDrawables[0],
+        top ?: compoundDrawables[1],
+        right ?: compoundDrawables[2],
+        bottom ?: compoundDrawables[3]
 )
 
 fun TextView.setDrawablesRelativeWithIntrinsicBounds(
-    @DrawableRes start: Int = 0,
-    @DrawableRes top: Int = 0,
-    @DrawableRes end: Int = 0,
-    @DrawableRes bottom: Int = 0
+        @DrawableRes start: Int = 0,
+        @DrawableRes top: Int = 0,
+        @DrawableRes end: Int = 0,
+        @DrawableRes bottom: Int = 0
 ) = setCompoundDrawablesRelativeWithIntrinsicBounds(
-    if (start != 0) ContextCompat.getDrawable(context, start) else compoundDrawablesRelative[0],
-    if (top != 0) ContextCompat.getDrawable(context, top) else compoundDrawablesRelative[1],
-    if (end != 0) ContextCompat.getDrawable(context, end) else compoundDrawablesRelative[2],
-    if (bottom != 0) ContextCompat.getDrawable(context, bottom) else compoundDrawablesRelative[3]
+        if (start != 0) ContextCompat.getDrawable(context, start) else compoundDrawablesRelative[0],
+        if (top != 0) ContextCompat.getDrawable(context, top) else compoundDrawablesRelative[1],
+        if (end != 0) ContextCompat.getDrawable(context, end) else compoundDrawablesRelative[2],
+        if (bottom != 0) ContextCompat.getDrawable(context, bottom) else compoundDrawablesRelative[3]
 )
 
 fun TextView.setDrawablesRelativeWithIntrinsicBounds(
-    start: Drawable? = null,
-    top: Drawable? = null,
-    end: Drawable? = null,
-    bottom: Drawable? = null
+        start: Drawable? = null,
+        top: Drawable? = null,
+        end: Drawable? = null,
+        bottom: Drawable? = null
 ) = setCompoundDrawablesRelativeWithIntrinsicBounds(
-    start ?: compoundDrawablesRelative[0],
-    top ?: compoundDrawablesRelative[1],
-    end ?: compoundDrawablesRelative[2],
-    bottom ?: compoundDrawablesRelative[3]
+        start ?: compoundDrawablesRelative[0],
+        top ?: compoundDrawablesRelative[1],
+        end ?: compoundDrawablesRelative[2],
+        bottom ?: compoundDrawablesRelative[3]
 )
 
 inline var TextView.drawableTop: Drawable

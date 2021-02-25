@@ -12,9 +12,9 @@ abstract class BaseViewBindingFragment<VB : ViewBinding> : BaseViewModelFragment
     val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         _binding = setBinding(inflater, container)
         return binding.root

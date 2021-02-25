@@ -65,7 +65,7 @@ fun <K, V> Map<K, V>.toJsonRequestBody(): RequestBody = toJson().toJsonRequestBo
  * ```
  */
 fun <K, V> jsonRequestBodyOf(vararg pairs: Pair<K, V>): RequestBody =
-    mapOf(*pairs).toJsonRequestBody()
+        mapOf(*pairs).toJsonRequestBody()
 
 /**
  * Class for convenience syntax of creating Json
@@ -114,7 +114,7 @@ class JsonObject {
     fun String.toArray(vararg value: JsonObject.() -> Unit) = put(this, value.toList())
 
     fun jsonArrayOf(vararg elements: JsonObject.() -> Unit): List<JsonObject.() -> Unit> =
-        elements.toList()
+            elements.toList()
 }
 
 inline fun jsonObjectOf(block: JsonObject.() -> Unit): JsonObject = JsonObject().also { it.block() }
@@ -152,39 +152,39 @@ inline fun jsonObjectOf(block: JsonObject.() -> Unit): JsonObject = JsonObject()
  * ```
  */
 inline fun requestBodyOf(body: JsonObject.() -> Unit): RequestBody =
-    jsonObjectOf(body).toJsonRequestBody()
+        jsonObjectOf(body).toJsonRequestBody()
 
 fun Uri.toMultipartBody(context: Context, name: String): MultipartBody.Part? =
-    if (scheme == "content") {
-        toContent(context)?.toMultipartBody(name)
-    } else {
-        path?.let {
-            val file = File(it)
-            if (file.exists()) {
-                file.toMultipartBody(name)
-            } else {
-                null
+        if (scheme == "content") {
+            toContent(context)?.toMultipartBody(name)
+        } else {
+            path?.let {
+                val file = File(it)
+                if (file.exists()) {
+                    file.toMultipartBody(name)
+                } else {
+                    null
+                }
             }
         }
-    }
 
 fun ByteArray.toMultipartBody(name: String): MultipartBody.Part =
-    MultipartBody.Part.createFormData(
-        name = name,
-        filename = "image",
-        body = toRequestBody(contentType = MultipartBody.FORM)
-    )
+        MultipartBody.Part.createFormData(
+                name = name,
+                filename = "image",
+                body = toRequestBody(contentType = MultipartBody.FORM)
+        )
 
 fun File.toMultipartBody(name: String): MultipartBody.Part? {
     // When uploading an image file which file name contains Korean, an error occurred on the server.
     // The server does not require file name of the image so we do not send it.
     // TODO 위 코멘트 빙글때와 마찬가지로 같은지 확인 필요
     return MultipartBody.Part.createFormData(
-        name = name,
-        filename = null,
-        body = asRequestBody(MultipartBody.FORM)
+            name = name,
+            filename = null,
+            body = asRequestBody(MultipartBody.FORM)
     )
 }
 
 inline fun <reified T> JsonDeserializationContext.deserialize(json: JsonElement): T =
-    deserialize(json, T::class.java)
+        deserialize(json, T::class.java)
