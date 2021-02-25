@@ -1,5 +1,5 @@
 ext {
-    libraryVersionName = '0.0.1-beta1'
+    libraryVersionName = '0.0.1-beta2'
 
     // Bintray setting info
     repositoryName = 'funin'
